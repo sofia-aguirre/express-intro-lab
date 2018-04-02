@@ -101,10 +101,10 @@ Solution in the solution branch.
      error: handleError
    });
 
-   handleSuccess = (json) =>  console.log(json);
-   
-   handleError = (xhr, status, errorThrown) => console.log('uh oh');
-   
+   const handleSuccess = json =>  console.log(json);
+
+   const handleError = (xhr, status, errorThrown) => console.log('uh oh');
+
   ```
   > Note: you must be on a page with jQuery in order to use .ajax in the browser console!  Fortunately, the included index.js does have jQuery.
 
@@ -201,7 +201,7 @@ We're making a weird app. Albums and taquerias.  Treat your senses.
     success: handleResponse
   });
 
-  handleResponse = (json) => {
+  const handleResponse = (json) => {
     // your code here
   }
   ```
