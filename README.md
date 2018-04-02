@@ -39,23 +39,19 @@ Solution in the solution branch.
   ```js
     // server.js
     // SERVER-SIDE JAVASCRIPT
-    var express = require('express');
-    var app = express();
+    const express = require('express');
+    const app = express();
 
     // Allow CORS: we'll use this today to reduce security so we can more easily test our code in the browser.
-    app.use(function(req, res, next) {
+    app.use((req, res, next) => {
       res.header("Access-Control-Allow-Origin", "*");
       res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
       next();
     });
 
-    app.get('/', function (req, res) {
-      res.send('Hello World!');
-    });
+    app.get('/', (req, res) => res.send('Hello World!'));
 
-    app.listen(process.env.PORT || 3000, function () {
-      console.log('Example app listening at http://localhost:3000/');
-    });
+    app.listen(process.env.PORT || 3000,  () => console.log('Example app listening at http://localhost:3000/'));
   ```
 2. Add a comment above each line of code saying what each line does.
 
@@ -73,7 +69,7 @@ Solution in the solution branch.
 
   ```js
     // server.js
-    var albums = [
+    const albums = [
       {
         title: 'Cupid Deluxe',
         artist: 'Blood Orange'
@@ -105,13 +101,10 @@ Solution in the solution branch.
      error: handleError
    });
 
-   function handleSuccess(json) {
-     console.log(json);
-   }
-
-   function handleError(xhr, status, errorThrown) {
-     console.log('uh oh');
-   }
+   handleSuccess = (json) =>  console.log(json);
+   
+   handleError = (xhr, status, errorThrown) => console.log('uh oh');
+   
   ```
   > Note: you must be on a page with jQuery in order to use .ajax in the browser console!  Fortunately, the included index.js does have jQuery.
 
@@ -180,7 +173,7 @@ We're making a weird app. Albums and taquerias.  Treat your senses.
 
   ```js
     // server.js
-    var taquerias = [
+    const taquerias = [
       { name: "La Taqueria" },
       { name: "El Farolito" },
       { name: "Taqueria Cancun" }
@@ -191,9 +184,7 @@ We're making a weird app. Albums and taquerias.  Treat your senses.
 
 
   ```js
-    app.get('/api/taquerias', function (req, res) {
-      res.json(taquerias);
-    });
+    app.get('/api/taquerias', (req, res) => res.json(taquerias));
   ```
 
 3. Navigate to http://localhost:3000/api/taquerias (remember to restart your server first!) and check that the data is showing up.
@@ -210,7 +201,7 @@ We're making a weird app. Albums and taquerias.  Treat your senses.
     success: handleResponse
   });
 
-  function handleResponse(json) {
+  handleResponse = (json) => {
     // your code here
   }
   ```
